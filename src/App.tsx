@@ -1,24 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+import { TextInput, TodoList } from './components';
 import './App.css';
+import useTodoInfo from './hooks/useTodoInfo';
 
-function App() {
+const App: React.FC = () => {
+  const {todo, setTodo, todos, setTodos, handleAddTodo} = useTodoInfo()
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <span className="heading">Taskify</span>
+      <TextInput todo={todo} setTodo={setTodo} handleAddTodo={handleAddTodo} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </div>
   );
 }
